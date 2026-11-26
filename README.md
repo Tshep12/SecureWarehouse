@@ -1,304 +1,286 @@
-\# SecureWarehouse
+# SecureWarehouse
 
+### A Cybersecure Warehouse Management System
 
+**SecureWarehouse** is a web-based Warehouse Management System (WMS) developed using Python and Flask. It combines warehouse operations, inventory management, logistics principles and cybersecurity practices to demonstrate how secure technology can support modern warehouse environments.
 
-\### A Secure Warehouse Management System
+The project brings together concepts from **Logistics and Supply Chain Management** and **Cybersecurity**, with a focus on inventory accuracy, access control, transaction integrity and secure warehouse operations.
 
+> **Project Status:** Under Active Development
 
+---
 
-SecureWarehouse is a web-based Warehouse Management System (WMS) developed using Python and Flask. The project combines warehouse inventory management, logistics operations and cybersecurity principles to demonstrate how secure software can support modern warehouse environments.
+## 1. Project Overview
 
+Warehouse management systems handle important business information, including inventory levels, stock movements, product records and employee activities.
 
+SecureWarehouse aims to address these operational requirements while incorporating security controls that help protect warehouse data and prevent unauthorised activities.
 
-\*\*Project Status:\*\* Under Active Development
+The project is being developed as a practical portfolio application to demonstrate skills in software development, warehouse management, database design and cybersecurity.
 
+## 2. Project Objectives
 
+The main objectives of SecureWarehouse are to:
 
-\## Project Objectives
+- Develop a functional warehouse inventory management system.
+- Manage product registration and inventory records.
+- Record incoming and outgoing stock transactions.
+- Maintain traceable stock movement history.
+- Implement secure user authentication and role-based access control.
+- Apply cybersecurity principles to warehouse operations.
+- Improve transaction validation and database integrity.
+- Introduce barcode-based product identification and scanning.
+- Develop reporting and analytics capabilities for inventory monitoring.
 
+## 3. Implemented Features
 
+The following features have been developed and tested during the current development phase.
 
-\- Manage warehouse products and inventory.
+### Warehouse Management
 
-\- Record incoming and outgoing stock transactions.
+- Product registration and management.
+- Inventory listing and stock quantity monitoring.
+- Stock receiving and issuing.
+- Stock movement history.
+- Transaction reference validation.
+- Insufficient stock validation to prevent invalid stock issues.
 
-\- Maintain a history of warehouse stock movements.
+### Authentication and Access Control
 
-\- Implement secure authentication and role-based access control.
+- User login and logout functionality.
+- Password hashing and verification.
+- Role-based access control.
+- Support for three user roles:
+  - Administrator
+  - Warehouse Manager
+  - Employee
+- Restricted access to authorised warehouse functions.
 
-\- Apply cybersecurity principles to warehouse management processes.
+### Security Controls
 
-\- Explore barcode-based inventory identification and scanning.
+- CSRF protection using Flask-WTF.
+- Secure password storage using Werkzeug password hashing.
+- HTTP-only session cookies.
+- SameSite session cookie configuration.
+- Login-protected application routes.
+- Server-side role and permission checks.
+- Application-level duplicate transaction reference checks.
 
-
-
-\## Current Features
-
-
-
-\- User authentication and password hashing.
-
-\- Role-based access control for administrators, warehouse managers and employees.
-
-\- Product registration and inventory management.
-
-\- Stock receiving and issuing.
-
-\- Stock movement history.
-
-\- Duplicate transaction reference protection.
-
-\- CSRF protection on forms.
-
-\- Secure session cookie configuration.
-
-
-
-\## Technology Stack
-
-
+## 4. Technology Stack
 
 | Technology | Purpose |
-
 |---|---|
-
 | Python | Backend programming |
-
 | Flask | Web application framework |
-
-| Flask-SQLAlchemy | Database integration |
-
-| SQLite | Database |
-
-| Flask-Login | User authentication |
-
+| Flask-SQLAlchemy | Database integration and ORM |
+| SQLite | Relational database |
+| Flask-Login | Authentication and session management |
 | Flask-WTF | CSRF protection |
+| Werkzeug | Password hashing and security utilities |
+| HTML and CSS | User interface |
+| Git | Version control |
+| GitHub | Source code hosting and project management |
 
-| HTML/CSS | User interface |
-
-| Git and GitHub | Version control |
-
-
-
-\## Project Structure
-
-
+## 5. Application Structure
 
 ```text
-
 SecureWarehouse/
-
+│
 ├── app/
-
 │   ├── templates/
-
-│   ├── static/
-
-│   ├── \_\_init\_\_.py
-
+│   │   ├── index.html
+│   │   ├── login.html
+│   │   ├── dashboard.html
+│   │   ├── add_product.html
+│   │   ├── inventory.html
+│   │   ├── receive_stock.html
+│   │   ├── issue_stock.html
+│   │   └── stock_history.html
+│   │
+│   ├── __init__.py
 │   ├── auth.py
-
 │   ├── commands.py
-
 │   ├── decorators.py
-
 │   ├── models.py
-
 │   └── routes.py
-
+│
 ├── docs/
-
 ├── tests/
-
-├── instance/
-
+│
+├── .gitignore
 ├── requirements.txt
-
-├── run.py
-
-└── .gitignore
-
+├── README.md
+└── run.py
 ```
 
+**Note:** The SQLite database, local virtual environment and Python cache files are excluded from version control.
 
+## 6. Installation and Setup
 
-The local virtual environment and database are excluded from version control.
+Follow these instructions to run SecureWarehouse locally on a Windows computer.
 
+### Prerequisites
 
+- Python installed.
+- Git installed.
+- A Windows terminal or Command Prompt.
 
-\## Installation and Setup
-
-
-
-\### 1. Clone the repository
-
-
+### Step 1: Clone the repository
 
 ```bash
-
 git clone https://github.com/Tshep12/SecureWarehouse.git
+```
 
+Navigate into the project directory:
+
+```bash
 cd SecureWarehouse
-
 ```
 
-
-
-\### 2. Create a virtual environment
-
-
+### Step 2: Create a virtual environment
 
 ```bash
-
 python -m venv .venv
-
 ```
 
-
-
-\### 3. Activate the environment
-
-
-
-Windows:
-
-
+### Step 3: Activate the virtual environment
 
 ```bash
-
-.venv\\Scripts\\activate
-
+.venv\Scripts\activate
 ```
 
-
-
-\### 4. Install dependencies
-
-
+### Step 4: Install dependencies
 
 ```bash
-
 python -m pip install -r requirements.txt
-
 ```
 
+### Step 5: Configure the application secret key
 
-
-\### 5. Configure the application
-
-
-
-Set a strong secret key using an environment variable before running the application.
-
-
+Set a strong secret key using an environment variable.
 
 PowerShell example:
 
-
-
 ```powershell
-
-$env:SECRET\_KEY = "replace-with-a-strong-random-secret"
-
+$env:SECRET_KEY = "your-strong-random-secret-key"
 ```
 
+Use a securely generated secret in your own environment. Never commit secret keys or credentials to GitHub.
 
-
-\### 6. Run the application
-
-
+### Step 6: Start the application
 
 ```bash
-
 python run.py
-
 ```
 
+### Step 7: Open the application
 
-
-Open your browser at:
-
-
+Visit the following address in your browser:
 
 ```text
-
 http://127.0.0.1:5000
-
 ```
 
+The application initialises its local SQLite database when it starts.
 
+Create an initial user account using the registered Flask CLI command:
 
-A local SQLite database is initialized automatically when the application starts. Create your first user using the application's Flask CLI command.
+```bash
+python -m flask --app run.py create-user
+```
 
+Follow the prompts to create an administrator or other authorised user.
 
+## 7. Development Roadmap
 
-\## Development Roadmap
+SecureWarehouse is being developed incrementally. The following roadmap outlines completed functionality and planned improvements.
 
+### Completed
 
+- [x] Flask application foundation.
+- [x] Database initialisation.
+- [x] User authentication.
+- [x] Password hashing.
+- [x] Role-based access control.
+- [x] Product registration.
+- [x] Inventory management.
+- [x] Stock receiving.
+- [x] Stock issuing.
+- [x] Stock movement history.
+- [x] CSRF protection.
+- [x] Duplicate transaction reference validation.
+- [x] Initial GitHub repository and documentation.
 
-\- \[x] Flask application foundation.
+### In Progress
 
-\- \[x] Authentication and user roles.
+- [ ] Database integrity improvements.
+- [ ] Stronger transaction constraints.
+- [ ] Security hardening.
+- [ ] Barcode integration.
 
-\- \[x] Product registration.
+### Planned
 
-\- \[x] Inventory management.
+- [ ] Barcode generation and product identification.
+- [ ] USB barcode scanner integration.
+- [ ] Smartphone camera barcode scanning.
+- [ ] Automated unit and integration testing.
+- [ ] Red Team security assessment.
+- [ ] Vulnerability identification and remediation.
+- [ ] Low-stock and critical-stock alerts.
+- [ ] Inventory forecasting and analytics.
+- [ ] Annual stock performance comparisons.
+- [ ] Downloadable inventory reports.
+- [ ] Production deployment.
+- [ ] Technical and security documentation.
 
-\- \[x] Stock receiving and issuing.
+## 8. Cybersecurity Approach
 
-\- \[x] Stock movement history.
+Cybersecurity is a core development consideration rather than an additional feature.
 
-\- \[x] Initial GitHub repository.
+SecureWarehouse incorporates security controls intended to protect application access, warehouse information and transaction operations.
 
-\- \[ ] Database integrity improvements.
+The security development objectives include:
 
-\- \[ ] Barcode generation and scanning.
+- **Authentication:** Ensure users must authenticate before accessing protected functionality.
+- **Authorisation:** Restrict operations according to assigned user roles.
+- **Data protection:** Protect passwords through secure hashing and avoid exposing sensitive configuration.
+- **Input validation:** Validate transaction data and reject invalid stock operations.
+- **Transaction integrity:** Prevent repeated transaction references and improve database consistency.
+- **Auditability:** Maintain stock movement records for operational traceability.
+- **Security testing:** Assess the application for vulnerabilities and document remediation.
 
-\- \[ ] Automated testing.
+A future Red Team assessment will evaluate the application's security against realistic attack scenarios.
 
-\- \[ ] Red Team security assessment.
+## 9. Project Scope and Learning Outcomes
 
-\- \[ ] Reporting and analytics.
+This project demonstrates the integration of:
 
-\- \[ ] Production deployment and documentation.
+- Warehouse Management Systems.
+- Inventory control and stock movement management.
+- Logistics and Supply Chain Management.
+- Database design and application development.
+- Authentication and access control.
+- Cybersecurity principles.
+- Secure software development practices.
+- Security testing and vulnerability assessment.
 
+The long-term objective is to develop a functional, secure and extensible warehouse management application.
 
+## 10. Project Status
 
-\## Cybersecurity Focus
+SecureWarehouse is an educational and professional portfolio project currently under active development.
 
+Features, security controls, testing procedures and documentation will continue to evolve throughout development.
 
+## 11. Author
 
-Security is an important part of SecureWarehouse. The project incorporates password hashing, role-based authorization, CSRF protection and transaction validation.
+**Tshep12**
 
+GitHub: [https://github.com/Tshep12](https://github.com/Tshep12)
 
+Project Repository: [https://github.com/Tshep12/SecureWarehouse](https://github.com/Tshep12/SecureWarehouse)
 
-Future development will explore security monitoring, vulnerability assessment, audit integrity and secure deployment practices.
+---
 
-
-
-\## Project Status
-
-
-
-SecureWarehouse is an educational and portfolio project under active development. Features and documentation will evolve as development progresses.
-
-
-
-\## Author
-
-
-
-\*\*Tshep12\*\*
-
-
-
-GitHub: https://github.com/Tshep12
-
-
-
-\---
-
-
-
-\*SecureWarehouse — Bringing warehouse management and cybersecurity together.\*
+*SecureWarehouse — Integrating warehouse management, supply chain operations and cybersecurity.*
 
